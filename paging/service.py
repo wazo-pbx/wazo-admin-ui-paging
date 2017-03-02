@@ -7,11 +7,11 @@ from wazo_admin_ui.helpers.service import BaseConfdService
 
 class PagingService(BaseConfdService):
 
-    resource = 'paging'
-    confd_resource = 'pagings'
+    resource_name = 'paging'
+    resource_confd = 'pagings'
 
     def create(self, resources):
-        paging = resources.get(self.resource)
+        paging = resources.get(self.resource_name)
         members = paging.get('members')
         callers = paging.get('callers')
 

@@ -1,0 +1,2 @@
+recursive-include paging/templates *
+recursive-include paging/static *

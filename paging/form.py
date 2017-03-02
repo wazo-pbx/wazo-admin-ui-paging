@@ -6,6 +6,8 @@ from flask_wtf import FlaskForm
 
 from wtforms.fields import SubmitField
 from wtforms.fields import TextField
+from wtforms.fields import BooleanField
+from wtforms.fields import SelectMultipleField
 
 from wtforms.validators import InputRequired
 
@@ -13,4 +15,13 @@ from wtforms.validators import InputRequired
 class PagingForm(FlaskForm):
     name = TextField('Name', [InputRequired()])
     number = TextField('Number', [InputRequired()])
+    members = SelectMultipleField('Members', choices=[])
+    callers = SelectMultipleField('Callers', choices=[])
+    announce_caller = BooleanField('Announce caller')
+    announce_sound = TextField('Announce sound')
+    caller_notification = BooleanField('Play notification to caller')
+    duplex = BooleanField('Duplex audio')
+    enabled = BooleanField('Enabled')
+    ignore_forward = BooleanField('Ignore forward')
+    record = BooleanField('Announce caller')
     submit = SubmitField('Submit')

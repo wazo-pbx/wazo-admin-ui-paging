@@ -28,10 +28,10 @@
     {% call build_hidden_add_containers('Add Paging') %}
       {% call build_form() %}
         {% call add_default_fields(form=form, submit_value="Add") %}
-	  {{ render_field(form.name) }}
-	  {{ render_field(form.number) }}
-	  {{ render_field(form.callers, class_="select2") }}
-	  {{ render_field(form.members, class_="select2") }}
+          {{ render_field(form.name) }}
+          {{ render_field(form.number) }}
+          {{ render_field(form.callers, class_="select2") }}
+          {{ render_field(form.members, class_="select2") }}
         {% endcall %}
       {% endcall %}
     {% endcall %}

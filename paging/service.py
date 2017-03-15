@@ -32,4 +32,4 @@ class PagingService(BaseConfdService):
         return self._confd.pagings.relations(paging).update_user_callers(callers)
 
     def _generate_users(self, users):
-        return [{'uuid': user } for user in users]
+        return [{'uuid': user} for user in users]

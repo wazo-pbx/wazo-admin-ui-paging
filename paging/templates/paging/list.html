@@ -40,10 +40,5 @@
 
 
 {% block additional_js %}
-  {% set list_url = url_for('destination.UserDestinationView:uuid_list_json') %}
-  <script>
-    $(document).ready(function() {
-      create_default_select2('{{ list_url }}');
-    });
-  </script>
+  {% include 'paging/js.html' %}
 {% endblock %}

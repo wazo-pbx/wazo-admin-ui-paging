@@ -30,8 +30,8 @@
         {% call add_default_fields(form=form, submit_value="Add") %}
           {{ render_field(form.name) }}
           {{ render_field(form.number) }}
-          {{ render_field(form.callers, class_="select2") }}
-          {{ render_field(form.members, class_="select2") }}
+          {{ render_field(form.callers) }}
+          {{ render_field(form.members) }}
         {% endcall %}
       {% endcall %}
     {% endcall %}

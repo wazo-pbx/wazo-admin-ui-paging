@@ -40,7 +40,20 @@ class PagingView(BaseView):
     def _map_resources_to_form(self, resources):
         members = self._get_user(resources['paging']['members']['users'])
         callers = self._get_user(resources['paging']['callers']['users'])
-        return self.form(data=resources['paging'], members=members, callers=callers)
+        form = self.form(data=resources['paging'], members=members, callers=callers)
+        form.members.choices = self._build_setted_choices(resources['paging']['members']['users'])
+        form.callers.choices = self._build_setted_choices(resources['paging']['callers']['users'])
+        return form
 
     def _get_user(self, users):
         return [user['uuid'] for user in users]
+
+    def _build_setted_choices(self, users):
+        results = []
+        for user in users:
+            if user.get('lastname'):
+                text = '{} {}'.format(user.get('firstname'), user['lastname'])
+            else:
+                text = user.get('firstname')
+            results.append((user['uuid'], text))
+        return results

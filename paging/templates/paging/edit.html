@@ -10,8 +10,8 @@
       {% call add_default_fields(form=form, submit_value="Update") %}
         {{ render_field(form.name) }}
         {{ render_field(form.number) }}
-        {{ render_field(form.members) }}
-        {{ render_field(form.callers) }}
+        {{ render_field(form.members, data_listing_href=url_for(listing_urls['uuid_user'])) }}
+        {{ render_field(form.callers, data_listing_href=url_for(listing_urls['uuid_user'])) }}
         {{ render_field(form.announce_caller) }}
         {{ render_field(form.announce_sound) }}
         {{ render_field(form.caller_notification) }}
@@ -22,9 +22,4 @@
       {% endcall %}
     {% endcall %}
   {% endcall %}
-{% endblock %}
-
-
-{% block additional_js %}
-  {% include 'paging/js.html' %}
 {% endblock %}

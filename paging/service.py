@@ -31,9 +31,6 @@ class PagingService(BaseConfdService):
         if callers:
             self._update_callers_to_paging(resource, self._generate_users(callers))
 
-    def get_users(self):
-        return self._confd.users.list()
-
     def _update_members_to_paging(self, paging, members):
         return self._confd.pagings.relations(paging).update_user_members(members)
 

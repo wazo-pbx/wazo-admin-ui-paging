@@ -5,20 +5,22 @@
 {% endblock %}
 
 {% block content %}
-  {% call build_form_containers('Pagings' ~ ' ' ~ resources.paging.name, 'bullhorn') %}
-    {% call build_form(action=url_for('.PagingView:put', id=resources.paging.id)) %}
-      {% call add_default_fields(form=form, submit_value="Update") %}
-        {{ render_field(form.name) }}
-        {{ render_field(form.number) }}
-        {{ render_field(form.members, data_listing_href=url_for(listing_urls['uuid_user'])) }}
-        {{ render_field(form.callers, data_listing_href=url_for(listing_urls['uuid_user'])) }}
-        {{ render_field(form.announce_caller) }}
-        {{ render_field(form.announce_sound) }}
-        {{ render_field(form.caller_notification) }}
-        {{ render_field(form.duplex) }}
-        {{ render_field(form.enabled) }}
-        {{ render_field(form.ignore_forward) }}
-        {{ render_field(form.record) }}
+  {% call build_section_row() %}
+    {% call build_form_box('Pagings', resources.paging.name, 'bullhorn') %}
+      {% call build_form(action=url_for('.PagingView:put', id=resources.paging.id)) %}
+        {% call add_default_fields(form=form, submit_value="Update") %}
+          {{ render_field(form.name) }}
+          {{ render_field(form.number) }}
+          {{ render_field(form.members, data_listing_href=url_for(listing_urls['uuid_user'])) }}
+          {{ render_field(form.callers, data_listing_href=url_for(listing_urls['uuid_user'])) }}
+          {{ render_field(form.announce_caller) }}
+          {{ render_field(form.announce_sound) }}
+          {{ render_field(form.caller_notification) }}
+          {{ render_field(form.duplex) }}
+          {{ render_field(form.enabled) }}
+          {{ render_field(form.ignore_forward) }}
+          {{ render_field(form.record) }}
+        {% endcall %}
       {% endcall %}
     {% endcall %}
   {% endcall %}

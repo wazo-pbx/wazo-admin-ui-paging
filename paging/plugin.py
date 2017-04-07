@@ -16,9 +16,8 @@ class Plugin(object):
 
     def load(self, dependencies):
         core = dependencies['flask']
-        config = dependencies['config']
 
-        PagingView.service = PagingService(config['confd'])
+        PagingView.service = PagingService()
         PagingView.register(paging, route_base='/pagings')
         register_flaskview(paging, PagingView)
 

@@ -3,6 +3,7 @@
 # SPDX-License-Identifier: GPL-3.0+
 
 from wazo_admin_ui.helpers.service import BaseConfdService
+from wazo_admin_ui.helpers.confd import confd
 
 
 class PagingService(BaseConfdService):
@@ -32,10 +33,10 @@ class PagingService(BaseConfdService):
             self._update_callers_to_paging(resource, self._generate_users(callers))
 
     def _update_members_to_paging(self, paging, members):
-        return self._confd.pagings.relations(paging).update_user_members(members)
+        return confd.pagings.relations(paging).update_user_members(members)
 
     def _update_callers_to_paging(self, paging, callers):
-        return self._confd.pagings.relations(paging).update_user_callers(callers)
+        return confd.pagings.relations(paging).update_user_callers(callers)
 
     def _generate_users(self, users):
         return [{'uuid': user} for user in users]

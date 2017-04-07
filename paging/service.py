@@ -24,7 +24,7 @@ class PagingService(BaseConfdService):
         members = paging.get('members')
         callers = paging.get('callers')
 
-        if resource == None:
+        if resource is None:
             resource = paging['id']
 
         if members:

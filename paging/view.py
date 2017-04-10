@@ -5,33 +5,16 @@
 from __future__ import unicode_literals
 
 from flask_menu.classy import classy_menu_item
-from marshmallow import fields
 
 from wazo_admin_ui.helpers.classful import BaseView
-from wazo_admin_ui.helpers.mallow import BaseSchema, BaseAggregatorSchema, extract_form_fields
 
 from .form import PagingForm
-
-
-class PagingSchema(BaseSchema):
-
-    context = fields.String(default='default')
-
-    class Meta:
-        fields = extract_form_fields(PagingForm)
-
-
-class AggregatorSchema(BaseAggregatorSchema):
-    _main_resource = 'paging'
-
-    paging = fields.Nested(PagingSchema)
 
 
 class PagingView(BaseView):
 
     form = PagingForm
     resource = 'paging'
-    schema = AggregatorSchema
 
     @classy_menu_item('.pagings', 'Pagings', order=4, icon="bullhorn")
     def index(self):
@@ -57,3 +40,13 @@ class PagingView(BaseView):
                 text = user.get('firstname')
             results.append((user['uuid'], text))
         return results
+
+    def _map_form_to_resources(self, form, form_id=None):
+        resources = {'paging': form.to_dict()}
+        if form_id:
+            resources['paging']['id'] = form_id
+        return resources
+
+    def _map_resources_to_form_errors(self, form, resources):
+        form.populate_errors(resources.get('paging', {}))
+        return form

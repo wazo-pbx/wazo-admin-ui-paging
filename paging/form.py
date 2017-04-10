@@ -2,18 +2,16 @@
 # Copyright 2017 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0+
 
-from flask_wtf import FlaskForm
-
-from wtforms.fields import SubmitField
-from wtforms.fields import StringField
-from wtforms.fields import BooleanField
-from wtforms.fields import SelectMultipleField
+from wtforms.fields import SubmitField, StringField, BooleanField, SelectMultipleField
 
 from wtforms.validators import InputRequired
 
+from wazo_admin_ui.helpers.form import BaseForm
 
-class PagingForm(FlaskForm):
+
+class PagingForm(BaseForm):
     name = StringField('Name', [InputRequired()])
+    context = StringField(default='default')
     number = StringField('Number', [InputRequired()])
     members = SelectMultipleField('Members', choices=[])
     callers = SelectMultipleField('Callers', choices=[])

@@ -6,8 +6,8 @@
 
 {% block content %}
   {% call build_section_row() %}
-    {% call build_form_box('Pagings', resources.paging.name, 'bullhorn') %}
-      {% call build_form(action=url_for('.PagingView:put', id=resources.paging.id)) %}
+    {% call build_form_box('Pagings', resource.name, 'bullhorn') %}
+      {% call build_form(action=url_for('.PagingView:put', id=resource.id)) %}
         {% call add_default_fields(form=form, submit_value="Update") %}
           {{ render_field(form.name) }}
           {{ render_field(form.number) }}

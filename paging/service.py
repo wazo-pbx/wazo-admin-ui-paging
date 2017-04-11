@@ -8,29 +8,25 @@ from wazo_admin_ui.helpers.confd import confd
 
 class PagingService(BaseConfdService):
 
-    resource_name = 'paging'
     resource_confd = 'pagings'
 
-    def create(self, resources):
-        resource = super(PagingService, self).create(resources)
-        self._update_members_callers(resources, resource)
+    def create(self, resource):
+        paging_created = super(PagingService, self).create(resource)
+        resource['id'] = paging_created['id']
+        self._update_members_callers(resource)
 
-    def update(self, resources):
-        super(PagingService, self).update(resources)
-        self._update_members_callers(resources)
+    def update(self, resource):
+        super(PagingService, self).update(resource)
+        self._update_members_callers(resource)
 
-    def _update_members_callers(self, resources, resource=None):
-        paging = resources.get(self.resource_name)
+    def _update_members_callers(self, paging):
         members = paging.get('members')
         callers = paging.get('callers')
 
-        if resource is None:
-            resource = paging['id']
-
         if members:
-            self._update_members_to_paging(resource, self._generate_users(members))
+            self._update_members_to_paging(paging, self._generate_users(members))
         if callers:
-            self._update_callers_to_paging(resource, self._generate_users(callers))
+            self._update_callers_to_paging(paging, self._generate_users(callers))
 
     def _update_members_to_paging(self, paging, members):
         return confd.pagings.relations(paging).update_user_members(members)

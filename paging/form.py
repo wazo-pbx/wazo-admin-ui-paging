@@ -4,19 +4,19 @@
 
 from wtforms.fields import SubmitField, StringField, BooleanField, SelectMultipleField
 
-from wtforms.validators import InputRequired
+from wtforms.validators import InputRequired, Length, Regexp
 
 from wazo_admin_ui.helpers.form import BaseForm
 
 
 class PagingForm(BaseForm):
-    name = StringField('Name', [InputRequired()])
+    name = StringField('Name', [InputRequired(), Length(max=128)])
     context = StringField(default='default')
-    number = StringField('Number', [InputRequired()])
+    number = StringField('Number', [InputRequired(), Length(max=32), Regexp(r'^[0-9]+$')])
     members = SelectMultipleField('Members', choices=[])
     callers = SelectMultipleField('Callers', choices=[])
     announce_caller = BooleanField('Announce caller')
-    announce_sound = StringField('Announce sound')
+    announce_sound = StringField('Announce sound', [Length(max=64)])
     caller_notification = BooleanField('Play notification to caller')
     duplex = BooleanField('Duplex audio')
     enabled = BooleanField('Enabled')

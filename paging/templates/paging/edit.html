@@ -11,8 +11,8 @@
         {% call add_default_fields(form=form, submit_value="Update") %}
           {{ render_field(form.name) }}
           {{ render_field(form.number) }}
-          {{ render_field(form.members, data_listing_href=url_for(listing_urls['uuid_user'])) }}
-          {{ render_field(form.callers, data_listing_href=url_for(listing_urls['uuid_user'])) }}
+          {{ render_field(form.members.user_uuids, data_listing_href=url_for(listing_urls['uuid_user'])) }}
+          {{ render_field(form.callers.user_uuids, data_listing_href=url_for(listing_urls['uuid_user'])) }}
           {{ render_field(form.announce_caller) }}
           {{ render_field(form.announce_sound) }}
           {{ render_field(form.caller_notification) }}
@@ -20,6 +20,8 @@
           {{ render_field(form.enabled) }}
           {{ render_field(form.ignore_forward) }}
           {{ render_field(form.record) }}
+          {{ render_field(form.members.users, with_label=false) }}
+          {{ render_field(form.callers.users, with_label=false) }}
         {% endcall %}
       {% endcall %}
     {% endcall %}

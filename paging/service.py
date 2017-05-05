@@ -24,15 +24,6 @@ class PagingService(BaseConfdService):
         callers = paging.get('callers')
 
         if members:
-            self._update_members_to_paging(paging, self._generate_users(members))
+            confd.pagings(paging).update_user_members(members.get('users'))
         if callers:
-            self._update_callers_to_paging(paging, self._generate_users(callers))
-
-    def _update_members_to_paging(self, paging, members):
-        return confd.pagings.relations(paging).update_user_members(members)
-
-    def _update_callers_to_paging(self, paging, callers):
-        return confd.pagings.relations(paging).update_user_callers(callers)
-
-    def _generate_users(self, users):
-        return [{'uuid': user} for user in users]
+            confd.pagings(paging).update_user_callers(callers.get('users'))

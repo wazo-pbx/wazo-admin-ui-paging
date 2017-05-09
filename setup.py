@@ -23,7 +23,7 @@ setup(
 
     entry_points={
         'wazo_admin_ui.plugins': [
-            'paging = paging.plugin:Plugin',
+            'paging = wazo_plugind_admin_ui_paging_official.plugin:Plugin',
         ]
     }
 )

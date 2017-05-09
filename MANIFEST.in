@@ -1,2 +1,2 @@
-recursive-include paging/templates *
-recursive-include paging/static *
+recursive-include wazo_plugind_admin_ui_paging_official/templates *
+recursive-include wazo_plugind_admin_ui_paging_official/static *

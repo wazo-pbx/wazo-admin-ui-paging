@@ -1,13 +1,13 @@
 {% extends "layout.html" %}
 
 {% block content_header %}
-  {{ build_breadcrumb('Paging', '', 'bullhorn', ['List']) }}
+  {{ build_breadcrumb(_('Paging'), '', 'bullhorn', ['List']) }}
 {% endblock %}
 
 {% block content %}
 
   <section class="content">
-    {% call build_list_containers('Paging', 'bullhorn') %}
+    {% call build_list_containers(_('Paging'), 'bullhorn') %}
       {% call build_list_table() %}
         {% call build_list_table_headers(get=url_for('.PagingView:get', id=''), delete=url_for('.PagingView:delete', id='')) %}
           <th>Name</th>
@@ -20,9 +20,9 @@
       {% endcall %}
     {% endcall %}
 
-    {% call build_hidden_add_containers('Add Paging') %}
+    {% call build_hidden_add_containers(_('Add Paging')) %}
       {% call build_form() %}
-        {% call add_default_fields(form=form, submit_value="Add") %}
+        {% call add_default_fields(form=form, submit_value=_('Add')) %}
           {{ render_field(form.name) }}
           {{ render_field(form.number) }}
           {{ render_field(form.members.user_uuids, data_listing_href=url_for(listing_urls['uuid_user'])) }}

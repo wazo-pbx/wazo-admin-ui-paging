@@ -1,14 +1,14 @@
 {% extends "layout.html" %}
 
 {% block content_header %}
-  {{ build_breadcrumb('Pagings', '', 'bullhorn', ['List']) }}
+  {{ build_breadcrumb(_('Pagings'), '', 'bullhorn', ['List']) }}
 {% endblock %}
 
 {% block content %}
   {% call build_section_row() %}
-    {% call build_form_box('Pagings', resource.name, 'bullhorn') %}
+    {% call build_form_box(_('Pagings'), resource.name, 'bullhorn') %}
       {% call build_form(action=url_for('.PagingView:put', id=resource.id)) %}
-        {% call add_default_fields(form=form, submit_value="Update") %}
+        {% call add_default_fields(form=form, submit_value=_('Update')) %}
           {{ render_field(form.name) }}
           {{ render_field(form.number) }}
           {{ render_field(form.members.user_uuids, data_listing_href=url_for(listing_urls['uuid_user'])) }}

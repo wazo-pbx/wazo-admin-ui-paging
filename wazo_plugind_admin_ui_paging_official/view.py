@@ -1,6 +1,7 @@
 # Copyright 2017 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0+
 
+from flask_babel import lazy_gettext as l_
 from flask_menu.classy import classy_menu_item
 
 from wazo_admin_ui.helpers.classful import BaseView
@@ -13,7 +14,7 @@ class PagingView(BaseView):
     form = PagingForm
     resource = 'paging'
 
-    @classy_menu_item('.pagings', 'Pagings', order=4, icon="bullhorn")
+    @classy_menu_item('.pagings', l_('Pagings'), order=4, icon="bullhorn")
     def index(self):
         return super(PagingView, self).index()
 

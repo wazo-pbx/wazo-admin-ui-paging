@@ -25,8 +25,8 @@
         {% call add_default_fields(form=form, submit_value="Add") %}
           {{ render_field(form.name) }}
           {{ render_field(form.number) }}
-          {{ render_field(form.callers, data_listing_href=url_for(listing_urls['uuid_user'])) }}
-          {{ render_field(form.members, data_listing_href=url_for(listing_urls['uuid_user'])) }}
+          {{ render_field(form.members.user_uuids, data_listing_href=url_for(listing_urls['uuid_user'])) }}
+          {{ render_field(form.callers.user_uuids, data_listing_href=url_for(listing_urls['uuid_user'])) }}
         {% endcall %}
       {% endcall %}
     {% endcall %}

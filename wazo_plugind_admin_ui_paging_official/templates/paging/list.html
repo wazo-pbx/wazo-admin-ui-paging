@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block content_header %}
-  {{ build_breadcrumb(_('Paging'), '', 'bullhorn', ['List']) }}
+  {{ build_breadcrumb(_('Paging'), '', 'bullhorn', [_('List')]) }}
 {% endblock %}
 
 {% block content %}
@@ -10,8 +10,8 @@
     {% call build_list_containers(_('Paging'), 'bullhorn') %}
       {% call build_list_table() %}
         {% call build_list_table_headers(get=url_for('.PagingView:get', id=''), delete=url_for('.PagingView:delete', id='')) %}
-          <th>Name</th>
-          <th>Number</th>
+          <th>{{ _('Name') }}</th>
+          <th>{{ _('Number') }}</th>
         {% endcall %}
         {% call(paging) build_list_table_rows(resource_list['items']) %}
           <td>{{ paging.name }}</td>

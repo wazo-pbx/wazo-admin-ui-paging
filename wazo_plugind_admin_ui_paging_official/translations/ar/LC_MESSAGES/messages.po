@@ -1,14 +1,14 @@
-# Translations template for wazo-admin-ui-paging.
+# Translations template for wazo_admin_ui_paging.
 # Copyright (C) 2018 The Wazo Authors  (see the AUTHORS file)
 # This file is distributed under the same license as the
-# wazo-admin-ui-paging project.
+# wazo_admin_ui_paging project.
 # Wazo Dev Team <dev@wazo.community>, 2018.
 # 
 msgid ""
 msgstr ""
-"Project-Id-Version: wazo-admin-ui-paging 0.1\n"
+"Project-Id-Version: wazo_admin_ui_paging 0.1\n"
 "Report-Msgid-Bugs-To: 'dev@wazo.community'\n"
-"POT-Creation-Date: 2018-02-26 10:39-0500\n"
+"POT-Creation-Date: 2018-02-27 13:43-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Language-Team: Arabic (https://www.transifex.com/wazo/teams/69545/ar/)\n"
 "MIME-Version: 1.0\n"
